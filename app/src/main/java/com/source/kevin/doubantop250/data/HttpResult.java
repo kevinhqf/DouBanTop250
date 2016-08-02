@@ -7,11 +7,9 @@ import java.util.ArrayList;
  */
 public class HttpResult {
     ArrayList<Movie> subjects;
-
     public ArrayList<Movie> getSubjects() {
         return subjects;
     }
-
     public void setSubjects(ArrayList<Movie> subjects) {
         this.subjects = subjects;
     }

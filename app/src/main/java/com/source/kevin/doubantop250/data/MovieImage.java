@@ -1,6 +1,8 @@
 package com.source.kevin.doubantop250.data;
 
-
+/**
+ * 电影图片对象
+ */
 public class MovieImage{
     String small;
     String large;

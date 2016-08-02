@@ -29,9 +29,7 @@ public class MoviePresenter implements MovieContract.Presenter {
 
     @Override
     public void start() {
-
     }
-
     @Override
     public void refresh() {
         MovieService service = getMovieService();
@@ -40,16 +38,18 @@ public class MoviePresenter implements MovieContract.Presenter {
             @Override
             public void onResponse(Call<HttpResult> call, Response<HttpResult> response) {
                 ArrayList<Movie> subjects = response.body().getSubjects();
-                mView.refresh(subjects);
+                mView.refresh(subjects);//更新UI
             }
-
             @Override
             public void onFailure(Call<HttpResult> call, Throwable t) {
-
             }
         });
     }
 
+    /**
+     * 获取MovieService
+     * @return
+     */
     private MovieService getMovieService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASIC_URL)
@@ -57,7 +57,6 @@ public class MoviePresenter implements MovieContract.Presenter {
                 .build();
         return retrofit.create(MovieService.class);
     }
-
     @Override
     public void loadMore(int start) {
         Log.e("start", start + "");
@@ -68,14 +67,12 @@ public class MoviePresenter implements MovieContract.Presenter {
             public void onResponse(Call<HttpResult> call, Response<HttpResult> response) {
                 ArrayList<Movie> subjects = response.body().getSubjects();
                 if (subjects != null) {
-                    mView.loadMore(subjects);
-                    mView.loadCompleted();
+                    mView.loadMore(subjects);//更新UI
+                    mView.loadCompleted();//改变加载状态
                 }
             }
-
             @Override
             public void onFailure(Call<HttpResult> call, Throwable t) {
-
             }
         });
     }

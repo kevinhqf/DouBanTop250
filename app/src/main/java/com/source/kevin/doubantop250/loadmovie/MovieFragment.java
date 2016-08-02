@@ -114,7 +114,6 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         mPresenter = (MoviePresenter) presenter;
     }
 
-
     @Override
     public void loadMore(ArrayList<Movie> movie) {
         movies.addAll(movie);
